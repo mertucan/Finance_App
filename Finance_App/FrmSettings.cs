@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Finance_App
 {
-    public partial class FrmMain : Form
+    public partial class FrmSettings : Form
     {
-        public FrmMain()
+        public FrmSettings()
         {
             InitializeComponent();
         }

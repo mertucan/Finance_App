@@ -40,6 +40,7 @@
             label1 = new Label();
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
+            panel2 = new Panel();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -47,17 +48,20 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.ForeColor = Color.FromArgb(116, 86, 174);
-            label6.Location = new Point(273, 801);
+            label6.ForeColor = Color.DarkSlateBlue;
+            label6.Location = new Point(273, 772);
             label6.Name = "label6";
             label6.Size = new Size(119, 32);
             label6.TabIndex = 21;
             label6.Text = "Sign Up";
+            label6.Click += label6_Click;
+            label6.MouseEnter += label6_MouseEnter;
+            label6.MouseLeave += label6_MouseLeave;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(177, 755);
+            label5.Location = new Point(177, 726);
             label5.Name = "label5";
             label5.Size = new Size(331, 32);
             label5.TabIndex = 20;
@@ -65,40 +69,44 @@
             // 
             // button1
             // 
-            button1.BackColor = Color.FromArgb(116, 86, 174);
+            button1.BackColor = Color.DarkSlateBlue;
             button1.Cursor = Cursors.Hand;
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
             button1.ForeColor = Color.White;
-            button1.Location = new Point(142, 665);
+            button1.Location = new Point(142, 636);
             button1.Name = "button1";
             button1.Size = new Size(380, 68);
             button1.TabIndex = 19;
             button1.Text = "Sign In";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // checkPass
             // 
             checkPass.AutoSize = true;
             checkPass.Cursor = Cursors.Hand;
             checkPass.FlatStyle = FlatStyle.Flat;
-            checkPass.Location = new Point(364, 556);
+            checkPass.Location = new Point(364, 533);
             checkPass.Name = "checkPass";
             checkPass.Size = new Size(251, 36);
             checkPass.TabIndex = 18;
             checkPass.Text = "Show Password";
             checkPass.UseVisualStyleBackColor = true;
+            checkPass.CheckedChanged += checkPass_CheckedChanged;
             // 
             // txtPassword
             // 
-            txtPassword.BackColor = Color.FromArgb(230, 231, 233);
-            txtPassword.BorderStyle = BorderStyle.None;
-            txtPassword.Font = new Font("MS UI Gothic", 16.125F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            txtPassword.BackColor = Color.WhiteSmoke;
+            txtPassword.BorderStyle = BorderStyle.FixedSingle;
+            txtPassword.Font = new Font("Arial", 13.125F);
             txtPassword.Location = new Point(51, 440);
             txtPassword.Multiline = true;
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(576, 58);
+            txtPassword.PasswordChar = '•';
+            txtPassword.Size = new Size(576, 47);
             txtPassword.TabIndex = 15;
+            txtPassword.KeyDown += txtPassword_KeyDown;
             // 
             // label3
             // 
@@ -111,13 +119,13 @@
             // 
             // txtUsername
             // 
-            txtUsername.BackColor = Color.FromArgb(230, 231, 233);
-            txtUsername.BorderStyle = BorderStyle.None;
-            txtUsername.Font = new Font("MS UI Gothic", 16.125F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            txtUsername.BackColor = Color.WhiteSmoke;
+            txtUsername.BorderStyle = BorderStyle.FixedSingle;
+            txtUsername.Font = new Font("Arial", 13.125F);
             txtUsername.Location = new Point(51, 289);
             txtUsername.Multiline = true;
             txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(576, 58);
+            txtUsername.Size = new Size(576, 47);
             txtUsername.TabIndex = 13;
             // 
             // label2
@@ -133,7 +141,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("MS UI Gothic", 19.875F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            label1.ForeColor = Color.FromArgb(116, 86, 174);
+            label1.ForeColor = Color.DarkSlateBlue;
             label1.Location = new Point(45, 98);
             label1.Name = "label1";
             label1.Size = new Size(240, 53);
@@ -142,7 +150,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(116, 86, 174);
+            panel1.BackColor = Color.DarkSlateBlue;
             panel1.Controls.Add(pictureBox1);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
@@ -159,12 +167,21 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
+            // panel2
+            // 
+            panel2.BackColor = Color.FromArgb(164, 165, 169);
+            panel2.Location = new Point(49, 167);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(581, 1);
+            panel2.TabIndex = 23;
+            // 
             // FrmLogin
             // 
             AutoScaleDimensions = new SizeF(17F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(678, 888);
+            Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -182,6 +199,7 @@
             Name = "FrmLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmLogin";
+            Load += FrmLogin_Load;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
@@ -201,5 +219,6 @@
         private Label label1;
         private Panel panel1;
         private PictureBox pictureBox1;
+        private Panel panel2;
     }
 }

@@ -42,15 +42,18 @@
             label6 = new Label();
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
+            panel2 = new Panel();
+            pictureBox2 = new PictureBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("MS UI Gothic", 19.875F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            label1.ForeColor = Color.FromArgb(116, 86, 174);
+            label1.ForeColor = Color.DarkSlateBlue;
             label1.Location = new Point(44, 78);
             label1.Name = "label1";
             label1.Size = new Size(311, 53);
@@ -68,24 +71,25 @@
             // 
             // txtUsername
             // 
-            txtUsername.BackColor = Color.FromArgb(230, 231, 233);
-            txtUsername.BorderStyle = BorderStyle.None;
-            txtUsername.Font = new Font("MS UI Gothic", 16.125F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            txtUsername.BackColor = Color.WhiteSmoke;
+            txtUsername.BorderStyle = BorderStyle.FixedSingle;
+            txtUsername.Font = new Font("Arial", 13.125F);
             txtUsername.Location = new Point(44, 219);
             txtUsername.Multiline = true;
             txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(576, 58);
+            txtUsername.Size = new Size(576, 47);
             txtUsername.TabIndex = 2;
             // 
             // txtPassword
             // 
-            txtPassword.BackColor = Color.FromArgb(230, 231, 233);
-            txtPassword.BorderStyle = BorderStyle.None;
-            txtPassword.Font = new Font("MS UI Gothic", 16.125F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            txtPassword.BackColor = Color.WhiteSmoke;
+            txtPassword.BorderStyle = BorderStyle.FixedSingle;
+            txtPassword.Font = new Font("Arial", 13.125F);
             txtPassword.Location = new Point(44, 370);
             txtPassword.Multiline = true;
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(576, 58);
+            txtPassword.PasswordChar = '•';
+            txtPassword.Size = new Size(576, 47);
             txtPassword.TabIndex = 4;
             // 
             // label3
@@ -99,14 +103,14 @@
             // 
             // txtConfirm
             // 
-            txtConfirm.BackColor = Color.FromArgb(230, 231, 233);
-            txtConfirm.BorderStyle = BorderStyle.None;
-            txtConfirm.Font = new Font("MS UI Gothic", 16.125F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            txtConfirm.BackColor = Color.WhiteSmoke;
+            txtConfirm.BorderStyle = BorderStyle.FixedSingle;
+            txtConfirm.Font = new Font("Arial", 13.125F);
             txtConfirm.Location = new Point(44, 528);
             txtConfirm.Multiline = true;
             txtConfirm.Name = "txtConfirm";
-            txtConfirm.PasswordChar = '*';
-            txtConfirm.Size = new Size(576, 58);
+            txtConfirm.PasswordChar = '•';
+            txtConfirm.Size = new Size(576, 47);
             txtConfirm.TabIndex = 6;
             // 
             // label4
@@ -129,10 +133,11 @@
             checkPass.TabIndex = 7;
             checkPass.Text = "Show Password";
             checkPass.UseVisualStyleBackColor = true;
+            checkPass.CheckedChanged += checkPass_CheckedChanged;
             // 
             // button1
             // 
-            button1.BackColor = Color.FromArgb(116, 86, 174);
+            button1.BackColor = Color.DarkSlateBlue;
             button1.Cursor = Cursors.Hand;
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
@@ -143,6 +148,7 @@
             button1.TabIndex = 8;
             button1.Text = "Sign Up";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // label5
             // 
@@ -156,16 +162,20 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.ForeColor = Color.FromArgb(116, 86, 174);
+            label6.ForeColor = Color.DarkSlateBlue;
             label6.Location = new Point(273, 819);
             label6.Name = "label6";
             label6.Size = new Size(107, 32);
             label6.TabIndex = 10;
             label6.Text = "Sign In";
+            label6.Click += label6_Click;
+            label6.MouseEnter += label6_MouseEnter;
+            label6.MouseLeave += label6_MouseLeave;
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(116, 86, 174);
+            panel1.BackColor = Color.DarkSlateBlue;
+            panel1.Controls.Add(pictureBox2);
             panel1.Controls.Add(pictureBox1);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
@@ -181,6 +191,26 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.FromArgb(164, 165, 169);
+            panel2.Location = new Point(49, 142);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(581, 1);
+            panel2.TabIndex = 23;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(11, 4);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(40, 40);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 1;
+            pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click;
             // 
             // FrmRegister
             // 
@@ -188,6 +218,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(678, 888);
+            Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -209,6 +240,7 @@
             Text = "FrmRegister";
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -228,5 +260,7 @@
         private Label label6;
         private Panel panel1;
         private PictureBox pictureBox1;
+        private Panel panel2;
+        private PictureBox pictureBox2;
     }
 }
