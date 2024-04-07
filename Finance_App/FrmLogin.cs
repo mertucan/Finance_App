@@ -70,5 +70,10 @@ namespace Finance_App
                 button1.PerformClick();
             }
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
     }
 }

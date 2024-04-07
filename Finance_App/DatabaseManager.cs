@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Finance_App.Forms;
 
 namespace Finance_App
 {
@@ -64,6 +65,7 @@ namespace Finance_App
                 if (count > 0)
                 {
                     FrmSettings.username = username;
+                    FormProfile.username = username;
                     FrmHub frmHub = new FrmHub();
                     FrmLogin frmLogin = new FrmLogin();
                     frmLogin.Hide();
@@ -158,6 +160,75 @@ namespace Finance_App
                     ClearTextBoxes(c);
                 }
             }
+        }
+
+        public void AddCommunicationAddress(string username, string communicationAddress)
+        {
+            string query = "UPDATE Users SET contact_address = @contact_address WHERE username = @username";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@contact_address", communicationAddress);
+                command.Parameters.AddWithValue("@username", username);
+
+                try
+                {
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("İletişim adresi başarıyla güncellendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Kullanıcı bulunamadı veya güncelleme yapılamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+        }
+
+        public UserData GetUserData(string username)
+        {
+            string query = "SELECT username, password, wallet_address, contact_address FROM Users WHERE username = @username";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@username", username);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    UserData userData = new UserData
+                    {
+                        Username = reader["username"].ToString(),
+                        Password = reader["password"].ToString(),
+                        WalletAddress = reader["wallet_address"].ToString(),
+                        CommunicationAddress = reader["contact_address"].ToString()
+                    };
+                    return userData;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        public class UserData
+        {
+            public string Username { get; set; }
+            public string Password { get; set; }
+            public string WalletAddress { get; set; }
+            public string CommunicationAddress { get; set; }
         }
 
     }

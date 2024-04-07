@@ -28,9 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSettings));
             panelTitleBar = new Panel();
             lblTitle = new Label();
             panelDesktopPanel = new Panel();
+            button2 = new Button();
+            txtCommunication = new TextBox();
+            label1 = new Label();
             button1 = new Button();
             checkPass = new CheckBox();
             txtNewPassword = new TextBox();
@@ -39,13 +43,16 @@
             label3 = new Label();
             txtUsername = new TextBox();
             label2 = new Label();
+            pictureBox1 = new PictureBox();
             panelTitleBar.SuspendLayout();
             panelDesktopPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panelTitleBar
             // 
             panelTitleBar.BackColor = Color.FromArgb(0, 150, 136);
+            panelTitleBar.Controls.Add(pictureBox1);
             panelTitleBar.Controls.Add(lblTitle);
             panelTitleBar.Dock = DockStyle.Top;
             panelTitleBar.Location = new Point(0, 0);
@@ -67,6 +74,9 @@
             // 
             // panelDesktopPanel
             // 
+            panelDesktopPanel.Controls.Add(button2);
+            panelDesktopPanel.Controls.Add(txtCommunication);
+            panelDesktopPanel.Controls.Add(label1);
             panelDesktopPanel.Controls.Add(button1);
             panelDesktopPanel.Controls.Add(checkPass);
             panelDesktopPanel.Controls.Add(txtNewPassword);
@@ -81,6 +91,41 @@
             panelDesktopPanel.Size = new Size(725, 880);
             panelDesktopPanel.TabIndex = 2;
             // 
+            // button2
+            // 
+            button2.BackColor = Color.DarkSlateBlue;
+            button2.Cursor = Cursors.Hand;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.ForeColor = Color.White;
+            button2.Location = new Point(173, 789);
+            button2.Name = "button2";
+            button2.Size = new Size(380, 68);
+            button2.TabIndex = 19;
+            button2.Text = "Save Address";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
+            // txtCommunication
+            // 
+            txtCommunication.BackColor = Color.WhiteSmoke;
+            txtCommunication.BorderStyle = BorderStyle.FixedSingle;
+            txtCommunication.Font = new Font("Arial", 13.125F);
+            txtCommunication.Location = new Point(75, 709);
+            txtCommunication.Multiline = true;
+            txtCommunication.Name = "txtCommunication";
+            txtCommunication.Size = new Size(576, 47);
+            txtCommunication.TabIndex = 18;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(75, 660);
+            label1.Name = "label1";
+            label1.Size = new Size(480, 32);
+            label1.TabIndex = 17;
+            label1.Text = "Communication Address (Optional)";
+            // 
             // button1
             // 
             button1.BackColor = Color.DarkSlateBlue;
@@ -88,7 +133,7 @@
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
             button1.ForeColor = Color.White;
-            button1.Location = new Point(175, 632);
+            button1.Location = new Point(173, 553);
             button1.Name = "button1";
             button1.Size = new Size(380, 68);
             button1.TabIndex = 16;
@@ -101,7 +146,7 @@
             checkPass.AutoSize = true;
             checkPass.Cursor = Cursors.Hand;
             checkPass.FlatStyle = FlatStyle.Flat;
-            checkPass.Location = new Point(397, 563);
+            checkPass.Location = new Point(395, 484);
             checkPass.Name = "checkPass";
             checkPass.Size = new Size(251, 36);
             checkPass.TabIndex = 15;
@@ -114,7 +159,7 @@
             txtNewPassword.BackColor = Color.WhiteSmoke;
             txtNewPassword.BorderStyle = BorderStyle.FixedSingle;
             txtNewPassword.Font = new Font("Arial", 13.125F);
-            txtNewPassword.Location = new Point(77, 477);
+            txtNewPassword.Location = new Point(75, 398);
             txtNewPassword.Multiline = true;
             txtNewPassword.Name = "txtNewPassword";
             txtNewPassword.PasswordChar = '•';
@@ -124,7 +169,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(77, 428);
+            label4.Location = new Point(75, 349);
             label4.Name = "label4";
             label4.Size = new Size(207, 32);
             label4.TabIndex = 13;
@@ -135,7 +180,7 @@
             txtOldPassword.BackColor = Color.WhiteSmoke;
             txtOldPassword.BorderStyle = BorderStyle.FixedSingle;
             txtOldPassword.Font = new Font("Arial", 13.125F);
-            txtOldPassword.Location = new Point(77, 319);
+            txtOldPassword.Location = new Point(75, 240);
             txtOldPassword.Multiline = true;
             txtOldPassword.Name = "txtOldPassword";
             txtOldPassword.PasswordChar = '•';
@@ -145,7 +190,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(77, 270);
+            label3.Location = new Point(75, 191);
             label3.Name = "label3";
             label3.Size = new Size(197, 32);
             label3.TabIndex = 11;
@@ -156,7 +201,7 @@
             txtUsername.BackColor = Color.WhiteSmoke;
             txtUsername.BorderStyle = BorderStyle.FixedSingle;
             txtUsername.Font = new Font("Arial", 13.125F);
-            txtUsername.Location = new Point(77, 168);
+            txtUsername.Location = new Point(75, 89);
             txtUsername.Multiline = true;
             txtUsername.Name = "txtUsername";
             txtUsername.ReadOnly = true;
@@ -166,11 +211,22 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(77, 119);
+            label2.Location = new Point(75, 40);
             label2.Name = "label2";
             label2.Size = new Size(148, 32);
             label2.TabIndex = 9;
             label2.Text = "Username";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(673, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(40, 40);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // FrmSettings
             // 
@@ -192,6 +248,7 @@
             panelTitleBar.PerformLayout();
             panelDesktopPanel.ResumeLayout(false);
             panelDesktopPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -207,5 +264,9 @@
         private Label label3;
         private TextBox txtUsername;
         private Label label2;
+        private Button button2;
+        private TextBox txtCommunication;
+        private Label label1;
+        private PictureBox pictureBox1;
     }
 }

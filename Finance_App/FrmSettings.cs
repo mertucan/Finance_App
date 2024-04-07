@@ -42,5 +42,15 @@ namespace Finance_App
                 txtNewPassword.PasswordChar = '•';
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dbManager.AddCommunicationAddress(username, txtCommunication.Text);
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
     }
 }

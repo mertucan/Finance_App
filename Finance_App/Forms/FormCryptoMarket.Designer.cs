@@ -28,32 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            dataGridView1 = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // label1
+            // dataGridView1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(300, 213);
-            label1.Name = "label1";
-            label1.Size = new Size(160, 32);
-            label1.TabIndex = 0;
-            label1.Text = "CryptoMarket";
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(16, 12);
+            dataGridView1.Margin = new Padding(4, 3, 4, 3);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 82;
+            dataGridView1.Size = new Size(1063, 601);
+            dataGridView1.TabIndex = 0;
             // 
             // FormCryptoMarket
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(17F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(label1);
+            BackColor = Color.White;
+            ClientSize = new Size(1092, 625);
+            Controls.Add(dataGridView1);
+            Font = new Font("Arial", 10.125F, FontStyle.Bold);
+            ForeColor = Color.FromArgb(164, 165, 169);
+            FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(4, 3, 4, 3);
             Name = "FormCryptoMarket";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormCryptoMarket";
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private Label label1;
+        private DataGridView dataGridView1;
     }
 }

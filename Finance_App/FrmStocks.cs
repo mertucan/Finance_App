@@ -99,7 +99,7 @@ namespace Finance_App
 
         private void button3_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.FormCryptoMarket(), sender);
+            OpenChildForm(new Forms.FormProfile(), sender);
         }
     }
 }
