@@ -72,7 +72,6 @@ namespace Finance_App
             this.panelDesktopPanel.Tag = childForm;
             childForm.Show();
             lblTitle.Text = childForm.Text.Substring(4);
-            pictureBox1.Visible = false;
         }
 
         private void DisableButton()

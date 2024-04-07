@@ -63,6 +63,7 @@ namespace Finance_App
 
                 if (count > 0)
                 {
+                    FrmSettings.username = username;
                     FrmHub frmHub = new FrmHub();
                     FrmLogin frmLogin = new FrmLogin();
                     frmLogin.Hide();
@@ -115,5 +116,49 @@ namespace Finance_App
 
             return new string(addressChars);
         }
+
+        public void ChangePassword(string username, string oldPassword, string newPassword)
+        {
+            string query = "SELECT password FROM Users WHERE username = @username";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@username", username);
+
+                connection.Open();
+                string dbPassword = (string)command.ExecuteScalar();
+
+                if (dbPassword == oldPassword)
+                {
+                    string updateQuery = "UPDATE Users SET password = @newPassword WHERE username = @username";
+                    SqlCommand updateCommand = new SqlCommand(updateQuery, connection);
+                    updateCommand.Parameters.AddWithValue("@newPassword", newPassword);
+                    updateCommand.Parameters.AddWithValue("@username", username);
+                    updateCommand.ExecuteNonQuery();
+                    MessageBox.Show("Şifre başarıyla değiştirildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Eski şifre yanlış!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        public void ClearTextBoxes(Control control)
+        {
+            foreach (Control c in control.Controls)
+            {
+                if (c is TextBox)
+                {
+                    ((TextBox)c).Clear();
+                }
+                else if (c.HasChildren)
+                {
+                    ClearTextBoxes(c);
+                }
+            }
+        }
+
     }
 }

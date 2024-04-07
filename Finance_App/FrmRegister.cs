@@ -54,12 +54,14 @@ namespace Finance_App
             {
                 dbManager.addUser(username, password);
                 FrmLogin frmLogin = new FrmLogin();
+                dbManager.ClearTextBoxes(this);
                 frmLogin.Show();
                 this.Hide();
             }
             else
             {
                 MessageBox.Show("Þifreler birbirinden farklý!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dbManager.ClearTextBoxes(this);
             }
         }
 
