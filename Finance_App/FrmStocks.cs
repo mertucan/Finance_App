@@ -89,7 +89,7 @@ namespace Finance_App
 
         private void button1_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.FormCryptoMarket(), sender);
+            OpenChildForm(new Forms.FormStocksMarket(), sender);
         }
 
         private void button2_Click(object sender, EventArgs e)

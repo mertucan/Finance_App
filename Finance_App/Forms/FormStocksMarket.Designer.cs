@@ -1,6 +1,6 @@
 ﻿namespace Finance_App.Forms
 {
-    partial class FormCryptoMarket
+    partial class FormStocksMarket
     {
         /// <summary>
         /// Required designer variable.
@@ -60,12 +60,12 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.Location = new Point(195, 84);
+            dataGridView1.Location = new Point(94, 77);
             dataGridView1.Margin = new Padding(4, 3, 4, 3);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 82;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(721, 483);
+            dataGridView1.Size = new Size(923, 487);
             dataGridView1.TabIndex = 0;
             // 
             // txtSearch
@@ -97,13 +97,13 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(240, 584);
+            label1.Location = new Point(256, 584);
             label1.Name = "label1";
             label1.Size = new Size(645, 32);
-            label1.TabIndex = 22;
+            label1.TabIndex = 21;
             label1.Text = "This process may take some time. Please wait...";
             // 
-            // FormCryptoMarket
+            // FormStocksMarket
             // 
             AutoScaleDimensions = new SizeF(17F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -117,7 +117,7 @@
             ForeColor = Color.FromArgb(164, 165, 169);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4, 3, 4, 3);
-            Name = "FormCryptoMarket";
+            Name = "FormStocksMarket";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormCryptoMarket";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
