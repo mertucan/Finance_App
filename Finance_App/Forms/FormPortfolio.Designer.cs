@@ -28,17 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            dataGridView1 = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // label1
+            // dataGridView1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(256, 584);
-            label1.Name = "label1";
-            label1.Size = new Size(645, 32);
-            label1.TabIndex = 21;
-            label1.Text = "This process may take some time. Please wait...";
+            dataGridView1.BackgroundColor = Color.WhiteSmoke;
+            dataGridView1.BorderStyle = BorderStyle.None;
+            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(20, 25, 70);
+            dataGridViewCellStyle1.Font = new Font("Arial", 10.125F, FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = Color.WhiteSmoke;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Arial", 10.125F, FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(164, 165, 169);
+            dataGridViewCellStyle2.SelectionBackColor = Color.ForestGreen;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.Location = new Point(45, 40);
+            dataGridView1.Margin = new Padding(4, 3, 4, 3);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 82;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.Size = new Size(1016, 542);
+            dataGridView1.TabIndex = 1;
             // 
             // FormPortfolio
             // 
@@ -46,7 +71,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1092, 625);
-            Controls.Add(label1);
+            Controls.Add(dataGridView1);
             Font = new Font("Arial", 10.125F, FontStyle.Bold);
             ForeColor = Color.FromArgb(164, 165, 169);
             FormBorderStyle = FormBorderStyle.None;
@@ -55,11 +80,12 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormPortfolio";
             Load += FormPortfolio_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-        private Label label1;
+
+        private DataGridView dataGridView1;
     }
 }

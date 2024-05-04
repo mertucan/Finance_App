@@ -123,5 +123,10 @@ namespace Finance_App
 
             OpenChildForm(new Forms.FormTransfer(loggedInUsername), sender);
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
     }
 }

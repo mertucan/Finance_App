@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCrypto));
             panelMenu = new Panel();
             button4 = new Button();
             button3 = new Button();
@@ -38,9 +39,11 @@
             panelTitleBar = new Panel();
             lblTitle = new Label();
             panelDesktopPanel = new Panel();
+            pictureBox1 = new PictureBox();
             panelMenu.SuspendLayout();
             panelLogo.SuspendLayout();
             panelTitleBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panelMenu
@@ -142,6 +145,7 @@
             // panelTitleBar
             // 
             panelTitleBar.BackColor = Color.FromArgb(0, 150, 136);
+            panelTitleBar.Controls.Add(pictureBox1);
             panelTitleBar.Controls.Add(lblTitle);
             panelTitleBar.Dock = DockStyle.Top;
             panelTitleBar.Location = new Point(307, 0);
@@ -169,6 +173,17 @@
             panelDesktopPanel.Size = new Size(1118, 630);
             panelDesktopPanel.TabIndex = 2;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(1066, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(40, 40);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 3;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
+            // 
             // FrmCrypto
             // 
             AutoScaleDimensions = new SizeF(17F, 32F);
@@ -190,6 +205,7 @@
             panelLogo.PerformLayout();
             panelTitleBar.ResumeLayout(false);
             panelTitleBar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -205,5 +221,6 @@
         private Label label1;
         private Panel panelDesktopPanel;
         private Button button4;
+        private PictureBox pictureBox1;
     }
 }

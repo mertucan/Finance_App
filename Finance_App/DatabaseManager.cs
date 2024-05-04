@@ -260,6 +260,43 @@ namespace Finance_App
             }
         }
 
+        public void GetTransactions(DataGridView dataGridView, string walletAddress)
+        {
+            string connectionString = "Data Source=MERT;Initial Catalog=FinanceApp;Integrated Security=True;";
+            string query = "SELECT * FROM Transactions WHERE wallet_address = @wallet_address";
+
+            // SqlConnection nesnesi oluşturma
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                // Komut oluşturma
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    // Parametre ekleme
+                    command.Parameters.AddWithValue("@wallet_address", walletAddress);
+
+                    // SqlDataAdapter oluşturma
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+
+                    // DataTable oluşturma
+                    DataTable dataTable = new DataTable();
+
+                    // Bağlantıyı açma ve verileri yükleyerek kripto işlemlerini al
+                    try
+                    {
+                        connection.Open();
+                        adapter.Fill(dataTable);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error retrieving crypto transactions from database: " + ex.Message);
+                    }
+
+                    // DataTable'ı DataGridView'e bağlama
+                    dataGridView.DataSource = dataTable;
+                }
+            }
+        }
+
         public class UserData
         {
             public string Username { get; set; }
