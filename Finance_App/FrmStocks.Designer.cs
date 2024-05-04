@@ -37,6 +37,7 @@
             panelTitleBar = new Panel();
             lblTitle = new Label();
             panelDesktopPanel = new Panel();
+            button4 = new Button();
             panelMenu.SuspendLayout();
             panelLogo.SuspendLayout();
             panelTitleBar.SuspendLayout();
@@ -45,6 +46,7 @@
             // panelMenu
             // 
             panelMenu.BackColor = Color.FromArgb(51, 51, 76);
+            panelMenu.Controls.Add(button4);
             panelMenu.Controls.Add(button3);
             panelMenu.Controls.Add(button2);
             panelMenu.Controls.Add(button1);
@@ -152,6 +154,21 @@
             panelDesktopPanel.Size = new Size(1118, 630);
             panelDesktopPanel.TabIndex = 2;
             // 
+            // button4
+            // 
+            button4.Dock = DockStyle.Top;
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Font = new Font("Arial", 10.125F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            button4.ForeColor = Color.White;
+            button4.Location = new Point(0, 366);
+            button4.Name = "button4";
+            button4.Size = new Size(307, 82);
+            button4.TabIndex = 4;
+            button4.Text = "Transfer Money";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
+            // 
             // FrmStocks
             // 
             AutoScaleDimensions = new SizeF(17F, 32F);
@@ -187,5 +204,6 @@
         private Label lblTitle;
         private Label label1;
         private Panel panelDesktopPanel;
+        private Button button4;
     }
 }

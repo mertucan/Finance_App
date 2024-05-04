@@ -8,6 +8,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Finance_App.DatabaseManager;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Finance_App
 {
@@ -90,6 +92,13 @@ namespace Finance_App
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string loggedInUsername = DatabaseManager.loggedInUsername;
+
+            if (string.IsNullOrEmpty(loggedInUsername))
+            {
+                return;
+            }
+
             OpenChildForm(new Forms.FormCryptoMarket(), sender);
         }
 
@@ -101,6 +110,18 @@ namespace Finance_App
         private void button3_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.FormProfile(), sender);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string loggedInUsername = DatabaseManager.loggedInUsername;
+
+            if (string.IsNullOrEmpty(loggedInUsername))
+            {
+                return;
+            }
+
+            OpenChildForm(new Forms.FormTransfer(loggedInUsername), sender);
         }
     }
 }

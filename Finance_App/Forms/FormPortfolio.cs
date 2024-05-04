@@ -16,5 +16,10 @@ namespace Finance_App.Forms
         {
             InitializeComponent();
         }
+
+        private void FormPortfolio_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

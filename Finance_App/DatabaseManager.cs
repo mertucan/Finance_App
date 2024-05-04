@@ -15,13 +15,14 @@ namespace Finance_App
     internal class DatabaseManager
     {
         private string connectionString = "Data Source=MERT;Initial Catalog=FinanceApp;Integrated Security=True;";
+        public static string loggedInUsername;
 
         public bool SaveUser(string username, string password)
         {
             bool userExists = CheckIfUserExists(username);
             if (userExists)
             {
-                MessageBox.Show("Bu kullanıcı adına sahip bir kullanıcı zaten var!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Username is already exists!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -64,6 +65,7 @@ namespace Finance_App
 
                 if (count > 0)
                 {
+                    loggedInUsername = username; // Kullanıcı giriş yaptığında kullanıcı adını sakla
                     FrmSettings.username = username;
                     FormProfile.username = username;
                     FrmHub frmHub = new FrmHub();
@@ -74,10 +76,20 @@ namespace Finance_App
                 }
                 else
                 {
-                    MessageBox.Show("Kullanıcı adı veya şifre yanlış!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Username or password is wrong!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
             }
+        }
+
+        public UserData GetUserData()
+        {
+            if (string.IsNullOrEmpty(loggedInUsername))
+            {
+                return null;
+            }
+
+            return GetUserData(loggedInUsername);
         }
 
         private bool CheckIfUserExists(string username)
@@ -100,7 +112,7 @@ namespace Finance_App
             bool success = SaveUser(username, password);
             if (success)
             {
-                MessageBox.Show("Kullanıcı başarıyla kaydedildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("User is successfully added!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -138,11 +150,11 @@ namespace Finance_App
                     updateCommand.Parameters.AddWithValue("@newPassword", newPassword);
                     updateCommand.Parameters.AddWithValue("@username", username);
                     updateCommand.ExecuteNonQuery();
-                    MessageBox.Show("Şifre başarıyla değiştirildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Password is succesfully changed.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show("Eski şifre yanlış!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Old password is wrong!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -179,11 +191,11 @@ namespace Finance_App
 
                     if (rowsAffected > 0)
                     {
-                        MessageBox.Show("İletişim adresi başarıyla güncellendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Contact address is successfully added", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show("Kullanıcı bulunamadı veya güncelleme yapılamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Username not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (Exception ex)
@@ -195,7 +207,7 @@ namespace Finance_App
 
         public UserData GetUserData(string username)
         {
-            string query = "SELECT username, password, wallet_address, contact_address FROM Users WHERE username = @username";
+            string query = "SELECT username, password, wallet_address, contact_address, balance FROM Users WHERE username = @username";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -212,7 +224,8 @@ namespace Finance_App
                         Username = reader["username"].ToString(),
                         Password = reader["password"].ToString(),
                         WalletAddress = reader["wallet_address"].ToString(),
-                        CommunicationAddress = reader["contact_address"].ToString()
+                        CommunicationAddress = reader["contact_address"].ToString(),
+                        Balance = Convert.ToDecimal(reader["balance"])
                     };
                     return userData;
                 }
@@ -223,12 +236,37 @@ namespace Finance_App
             }
         }
 
+        public bool UpdateUserBalance(string username, decimal additionalAmount)
+        {
+            string query = "UPDATE Users SET balance = balance + @additionalAmount WHERE username = @username";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@additionalAmount", additionalAmount);
+                command.Parameters.AddWithValue("@username", username);
+
+                try
+                {
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+                    return rowsAffected > 0;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                    return false;
+                }
+            }
+        }
+
         public class UserData
         {
             public string Username { get; set; }
             public string Password { get; set; }
             public string WalletAddress { get; set; }
             public string CommunicationAddress { get; set; }
+            public decimal Balance { get; set; }
         }
 
     }

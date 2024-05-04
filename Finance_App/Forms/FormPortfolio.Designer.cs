@@ -34,26 +34,32 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(385, 191);
+            label1.Location = new Point(256, 584);
             label1.Name = "label1";
-            label1.Size = new Size(104, 32);
-            label1.TabIndex = 0;
-            label1.Text = "Portfolio";
+            label1.Size = new Size(645, 32);
+            label1.TabIndex = 21;
+            label1.Text = "This process may take some time. Please wait...";
             // 
             // FormPortfolio
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(17F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackColor = Color.White;
+            ClientSize = new Size(1092, 625);
             Controls.Add(label1);
+            Font = new Font("Arial", 10.125F, FontStyle.Bold);
+            ForeColor = Color.FromArgb(164, 165, 169);
+            FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(4, 3, 4, 3);
             Name = "FormPortfolio";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormPortfolio";
+            Load += FormPortfolio_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
         private Label label1;
     }
 }

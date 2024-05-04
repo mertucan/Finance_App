@@ -89,17 +89,36 @@ namespace Finance_App
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string loggedInUsername = DatabaseManager.loggedInUsername;
+
+            if (string.IsNullOrEmpty(loggedInUsername))
+            {
+                return;
+            }
+
             OpenChildForm(new Forms.FormStocksMarket(), sender);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.FormCryptoMarket(), sender);
+            OpenChildForm(new Forms.FormPortfolio(), sender);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.FormProfile(), sender);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string loggedInUsername = DatabaseManager.loggedInUsername;
+
+            if (string.IsNullOrEmpty(loggedInUsername))
+            {
+                return;
+            }
+
+            OpenChildForm(new Forms.FormTransfer(loggedInUsername), sender);
         }
     }
 }
