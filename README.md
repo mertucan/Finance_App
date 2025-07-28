@@ -182,12 +182,19 @@ Finance_App/
 
 ### Giriş Ekranı
 
+<img width="568" height="758" alt="Ekran görüntüsü 2025-07-28 211410" src="https://github.com/user-attachments/assets/03f70f6c-816a-4d62-ac51-5f70596d95c6" />
+
 ### Kayıt Ekranı
+
+<img width="589" height="756" alt="Ekran görüntüsü 2025-07-28 211419" src="https://github.com/user-attachments/assets/71e3dde4-483b-4cd6-adc0-f987b01c4617" />
 
 ### Stocks Ekranı
 
+<img width="1201" height="623" alt="Ekran görüntüsü 2025-07-28 211446" src="https://github.com/user-attachments/assets/9b59858b-ffa2-4c5a-b2e6-984200b36cb1" />
+
 ### Kripto Ekranı
 
+<img width="1205" height="508" alt="Ekran görüntüsü 2025-07-28 211433" src="https://github.com/user-attachments/assets/5dd646b7-4f90-4b90-8da1-5e9c840af210" />
 
 ## 🎯 Kullanım
 
